@@ -52,7 +52,7 @@ The contact form is configured for Netlify Forms using the Next Runtime v5 migra
 - Form name: `portfolio-contact`
 - Honeypot field: `bot-field`
 - Detection file: `public/__forms.html`
-- Runtime submit target: `POST /__forms.html`
+- Runtime submit target: `POST /__forms`
 - Success page: `/thank-you`
 
 In Netlify, enable form notifications/spam filtering as needed. Submissions will appear in the Netlify dashboard under **Forms** after deployment.

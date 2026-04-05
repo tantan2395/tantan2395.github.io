@@ -28,11 +28,14 @@ export function ContactSection() {
       });
 
       if (!response.ok) {
-        throw new Error("Failed to submit form");
+        const details = await response.text();
+        throw new Error(`HTTP ${response.status}: ${details.slice(0, 220)}`);
       }
 
       window.location.href = "/thank-you";
-    } catch {
+    } catch (error) {
+      // Keep details in console to speed up debugging in production.
+      console.error("Netlify form submission failed:", error);
       setSubmitError(
         "Submission failed. Please try again, or email me directly at tantancantora@gmail.com."
       );
@@ -89,6 +92,7 @@ export function ContactSection() {
           <form
             name="portfolio-contact"
             method="POST"
+            action="/__forms.html"
             onSubmit={handleSubmit}
             className="rounded-2xl border border-surface-200/80 bg-white/70 p-6 shadow-soft dark:border-surface-300/20 dark:bg-surface-900/30"
           >
