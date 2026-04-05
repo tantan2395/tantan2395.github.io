@@ -1,0 +1,57 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --surface-50: 248 250 252;
+  --surface-100: 241 245 249;
+  --surface-200: 226 232 240;
+  --surface-300: 203 213 225;
+  --surface-900: 15 23 42;
+
+  --accent-400: 14 165 233;
+  --accent-500: 2 132 199;
+  --accent-600: 3 105 161;
+
+  --text-primary: 15 23 42;
+  --text-secondary: 51 65 85;
+  --text-muted: 100 116 139;
+}
+
+.dark {
+  --surface-50: 2 6 23;
+  --surface-100: 15 23 42;
+  --surface-200: 30 41 59;
+  --surface-300: 51 65 85;
+  --surface-900: 2 6 23;
+
+  --accent-400: 56 189 248;
+  --accent-500: 14 165 233;
+  --accent-600: 2 132 199;
+
+  --text-primary: 226 232 240;
+  --text-secondary: 203 213 225;
+  --text-muted: 148 163 184;
+}
+
+@layer base {
+  * {
+    @apply border-surface-200;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-surface-50 text-text-primary;
+  }
+
+  .font-heading {
+    font-family: var(--font-heading), sans-serif;
+  }
+
+  .font-body {
+    font-family: var(--font-body), sans-serif;
+  }
+}

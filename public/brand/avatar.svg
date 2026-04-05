@@ -1,0 +1,13 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="512" height="512" rx="48" fill="#E2E8F0"/>
+  <circle cx="256" cy="182" r="96" fill="url(#paint0_linear_1_2)"/>
+  <path d="M96 432C96 337.634 172.634 261 267 261H245C339.366 261 416 337.634 416 432V464H96V432Z" fill="#0F172A"/>
+  <rect x="176" y="333" width="160" height="28" rx="14" fill="#38BDF8"/>
+  <text x="256" y="220" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="52" font-weight="700">JC</text>
+  <defs>
+    <linearGradient id="paint0_linear_1_2" x1="160" y1="86" x2="352" y2="278" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0EA5E9"/>
+      <stop offset="1" stop-color="#0369A1"/>
+    </linearGradient>
+  </defs>
+</svg>

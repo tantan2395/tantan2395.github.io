@@ -1,0 +1,122 @@
+import { profile } from "@/data/profile";
+import { Container } from "@/components/ui/container";
+import { SectionHeading } from "@/components/ui/section-heading";
+
+export function ContactSection() {
+  return (
+    <section id="contact" className="py-16 sm:py-20">
+      <Container>
+        <SectionHeading
+          eyebrow="Contact"
+          title="Let’s build something high-impact."
+          description="Open to senior and lead full-stack opportunities, product engineering roles, and architecture-focused engagements."
+        />
+
+        <div className="mt-8 grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
+          <aside className="space-y-4 rounded-2xl border border-surface-200/80 bg-white/70 p-6 shadow-soft dark:border-surface-300/20 dark:bg-surface-900/30">
+            <h3 className="font-heading text-xl font-semibold text-text-primary">
+              Direct Details
+            </h3>
+            <dl className="space-y-3 text-sm text-text-secondary">
+              <div>
+                <dt className="font-semibold text-text-primary">Email</dt>
+                <dd>
+                  <a
+                    href={`mailto:${profile.email}`}
+                    className="transition hover:text-accent-500"
+                  >
+                    {profile.email}
+                  </a>
+                </dd>
+              </div>
+              <div>
+                <dt className="font-semibold text-text-primary">Location</dt>
+                <dd>{profile.location}</dd>
+              </div>
+              <div>
+                <dt className="font-semibold text-text-primary">GitHub</dt>
+                <dd>
+                  <a
+                    href={profile.github}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="transition hover:text-accent-500"
+                  >
+                    {profile.github}
+                  </a>
+                </dd>
+              </div>
+            </dl>
+          </aside>
+
+          <form
+            name="portfolio-contact"
+            method="POST"
+            action="/thank-you"
+            data-netlify="true"
+            data-netlify-honeypot="bot-field"
+            className="rounded-2xl border border-surface-200/80 bg-white/70 p-6 shadow-soft dark:border-surface-300/20 dark:bg-surface-900/30"
+          >
+            <input type="hidden" name="form-name" value="portfolio-contact" />
+            <p className="hidden">
+              <label>
+                Do not fill this out if you are human:
+                <input name="bot-field" />
+              </label>
+            </p>
+            <h3 className="font-heading text-xl font-semibold text-text-primary">
+              Send a Message
+            </h3>
+            <p className="mt-2 text-sm text-text-secondary">
+              This form submits directly to Netlify Forms.
+            </p>
+            <div className="mt-6 space-y-4">
+              <label className="block">
+                <span className="mb-1 block text-sm font-medium text-text-primary">
+                  Name
+                </span>
+                <input
+                  id="name"
+                  name="name"
+                  required
+                  type="text"
+                  className="w-full rounded-xl border border-surface-300 bg-transparent px-4 py-3 text-sm text-text-primary outline-none transition focus:border-accent-500"
+                />
+              </label>
+              <label className="block">
+                <span className="mb-1 block text-sm font-medium text-text-primary">
+                  Email
+                </span>
+                <input
+                  id="email"
+                  name="email"
+                  required
+                  type="email"
+                  className="w-full rounded-xl border border-surface-300 bg-transparent px-4 py-3 text-sm text-text-primary outline-none transition focus:border-accent-500"
+                />
+              </label>
+              <label className="block">
+                <span className="mb-1 block text-sm font-medium text-text-primary">
+                  Message
+                </span>
+                <textarea
+                  id="message"
+                  name="message"
+                  required
+                  rows={5}
+                  className="w-full rounded-xl border border-surface-300 bg-transparent px-4 py-3 text-sm text-text-primary outline-none transition focus:border-accent-500"
+                />
+              </label>
+            </div>
+            <button
+              type="submit"
+              className="mt-6 inline-flex items-center rounded-full bg-accent-500 px-5 py-3 text-sm font-semibold text-white transition hover:bg-accent-600"
+            >
+              Send Message
+            </button>
+          </form>
+        </div>
+      </Container>
+    </section>
+  );
+}
