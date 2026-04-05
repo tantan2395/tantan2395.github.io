@@ -46,7 +46,7 @@ export function ContactSection() {
         <SectionHeading
           eyebrow="Contact"
           title="Let’s build something high-impact."
-          description="Open to senior and lead full-stack opportunities, product engineering roles, and architecture-focused engagements."
+          description="Open to full-stack, frontend, backend, and broader software engineering opportunities."
         />
 
         <div className="mt-8 grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
