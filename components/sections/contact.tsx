@@ -1,8 +1,45 @@
+"use client";
+
+import type { FormEvent } from "react";
+import { useState } from "react";
 import { profile } from "@/data/profile";
 import { Container } from "@/components/ui/container";
 import { SectionHeading } from "@/components/ui/section-heading";
 
 export function ContactSection() {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
+
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    setIsSubmitting(true);
+    setSubmitError(null);
+
+    const form = event.currentTarget;
+    const formData = new FormData(form);
+    const encoded = new URLSearchParams();
+    formData.forEach((value, key) => encoded.append(key, String(value)));
+
+    try {
+      const response = await fetch("/__forms.html", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: encoded.toString()
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to submit form");
+      }
+
+      window.location.href = "/thank-you";
+    } catch {
+      setSubmitError(
+        "Submission failed. Please try again, or email me directly at tantancantora@gmail.com."
+      );
+      setIsSubmitting(false);
+    }
+  }
+
   return (
     <section id="contact" className="py-16 sm:py-20">
       <Container>
@@ -52,9 +89,7 @@ export function ContactSection() {
           <form
             name="portfolio-contact"
             method="POST"
-            action="/thank-you"
-            data-netlify="true"
-            data-netlify-honeypot="bot-field"
+            onSubmit={handleSubmit}
             className="rounded-2xl border border-surface-200/80 bg-white/70 p-6 shadow-soft dark:border-surface-300/20 dark:bg-surface-900/30"
           >
             <input type="hidden" name="form-name" value="portfolio-contact" />
@@ -108,11 +143,15 @@ export function ContactSection() {
                 />
               </label>
             </div>
+            {submitError ? (
+              <p className="mt-4 text-sm text-red-500">{submitError}</p>
+            ) : null}
             <button
               type="submit"
+              disabled={isSubmitting}
               className="mt-6 inline-flex items-center rounded-full bg-accent-500 px-5 py-3 text-sm font-semibold text-white transition hover:bg-accent-600"
             >
-              Send Message
+              {isSubmitting ? "Sending..." : "Send Message"}
             </button>
           </form>
         </div>
